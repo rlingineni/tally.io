@@ -1,7 +1,7 @@
 # Getting Started with Tally
 Tally keeps track of aggregates. It may be used in a wide array of cases. It is currently available as a C# API. 
 
-#### [Web Routes](https://app.apiary.io/tally4/editor)
+#### [Web Routes](http://docs.tally4.apiary.io/)
 
 #### [Getting Started with Schemas](./schema.html)
 
@@ -10,9 +10,8 @@ Tally keeps track of aggregates. It may be used in a wide array of cases. It is 
 
 
 
-
 ## Quick Start
-Check out the [Web API docs](https://app.apiary.io/tally4/editor) for more information on routing and parameter details.
+Check out the [Web API docs](http://docs.tally4.apiary.io/) for more information on routing and parameter details.
 
 
 1. **Create a schema for your dataset**
