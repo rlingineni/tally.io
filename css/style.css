@@ -23,6 +23,18 @@ body {
   position: relative;
 }
 
+.demos {
+  font-family: "PT Sans", Arial, serif;
+  font-weight: 300;
+  font-size: 20px;
+  line-height: 1.5;
+  color: #666666;
+  color: #7f7f7f;
+  background: #f1f1f1;
+  height: 100%;
+  position: relative;
+}
+
 a {
   color: #ff3b30;
   -webkit-transition: 0.5s;
@@ -350,6 +362,7 @@ h1, h2, h3, h4, h5, h6 {
   border: 2px solid #fff;
   text-decoration: none !important;
 }
+
 @media screen and (max-width: 768px) {
   #fh5co-home .text-inner .call-to-action a.demo {
     margin-bottom: 20px;
@@ -382,8 +395,34 @@ h1, h2, h3, h4, h5, h6 {
   }
 }
 
-.fh5co-explore {
+#fh5co-demo {
+  padding: 150 0 0 0;
+  background: #191919;
   padding-bottom: 40px;
+}
+
+#fh5co-explore {
+  padding-bottom: 40px;
+}
+
+#fh5co-demo h2{
+  font: "Avenir";
+  color:  #f1f1f1;
+}
+
+#fh5co-demo h3{
+  font: "Helevetica Neueu Light";
+  color:  #7f7f7f;
+  font-weight: 10
+}
+
+.guide{
+background: #f1f1f1;
+margin: 50px 0px 0px 0px;
+}
+
+.explore {
+  background: #191919;
 }
 
 .fh5co-explore-bg-color {
@@ -532,6 +571,24 @@ h1, h2, h3, h4, h5, h6 {
     text-align: left !important;
   }
 }
+
+#fh5co-explore .call-to-action a.sign-up {
+  float: right;
+  margin-top: 20px;
+  padding: 18px 60px;
+  background: #ea574c;
+  color: #fff;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  -ms-border-radius: 4px;
+  border-radius: 4px;
+  -webkit-box-shadow: 0px 3px 6px -1px rgba(0, 0, 0, 0.19);
+  -moz-box-shadow: 0px 3px 6px -1px rgba(0, 0, 0, 0.19);
+  -ms-box-shadow: 0px 3px 6px -1px rgba(0, 0, 0, 0.19);
+  -o-box-shadow: 0px 3px 6px -1px rgba(0, 0, 0, 0.19);
+  box-shadow: 0px 3px 6px -1px rgba(0, 0, 0, 0.19);
+}
+
 .getting-started .call-to-action a.sign-up {
   float: right;
   margin-top: 20px;
@@ -548,6 +605,63 @@ h1, h2, h3, h4, h5, h6 {
   -o-box-shadow: 0px 3px 6px -1px rgba(0, 0, 0, 0.19);
   box-shadow: 0px 3px 6px -1px rgba(0, 0, 0, 0.19);
 }
+
+#fh5co-explore .call-to-action a.color-red {
+  float: center;
+  margin-left: 100px;
+   margin-top: 20px;
+  padding-right: 100px; 
+  padding: 18px 60px;
+  background: #ea574c;
+  color: #fff;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  -ms-border-radius: 4px;
+  border-radius: 4px;
+  -webkit-box-shadow: 0px 3px 6px -1px rgba(0, 0, 0, 0.19);
+  -moz-box-shadow: 0px 3px 6px -1px rgba(0, 0, 0, 0.19);
+  -ms-box-shadow: 0px 3px 6px -1px rgba(0, 0, 0, 0.19);
+  -o-box-shadow: 0px 3px 6px -1px rgba(0, 0, 0, 0.19);
+   box-shadow: 0px 3px 6px -1px rgba(0, 0, 0, 0.19); 
+}
+
+#fh5co-explore .call-to-action a.color-green {
+  float: center;
+  margin-left: 100px;
+   margin-top: 20px;
+  padding-right: 100px; 
+  padding: 18px 60px;
+  background: #4cea57;
+  color: #fff;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  -ms-border-radius: 4px;
+  border-radius: 4px;
+  -webkit-box-shadow: 0px 3px 6px -1px rgba(0, 0, 0, 0.19);
+  -moz-box-shadow: 0px 3px 6px -1px rgba(0, 0, 0, 0.19);
+  -ms-box-shadow: 0px 3px 6px -1px rgba(0, 0, 0, 0.19);
+  -o-box-shadow: 0px 3px 6px -1px rgba(0, 0, 0, 0.19);
+   box-shadow: 0px 3px 6px -1px rgba(0, 0, 0, 0.19); 
+}
+
+#fh5co-explore .call-to-action a.color-blue {
+  float: center;
+  margin-left: 100px;
+  padding-right: 100px; 
+  padding: 18px 60px;
+  background: #574cea;
+  color: #fff;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  -ms-border-radius: 4px;
+  border-radius: 4px;
+  -webkit-box-shadow: 0px 3px 6px -1px rgba(0, 0, 0, 0.19);
+  -moz-box-shadow: 0px 3px 6px -1px rgba(0, 0, 0, 0.19);
+  -ms-box-shadow: 0px 3px 6px -1px rgba(0, 0, 0, 0.19);
+  -o-box-shadow: 0px 3px 6px -1px rgba(0, 0, 0, 0.19);
+   box-shadow: 0px 3px 6px -1px rgba(0, 0, 0, 0.19); 
+}
+
 @media screen and (max-width: 992px) {
   .getting-started .call-to-action a.sign-up {
     float: left !important;
@@ -761,12 +875,37 @@ h1, h2, h3, h4, h5, h6 {
   margin: 0 0 0 0;
   font-size: 40px;
   font-weight: 400;
-  color: #333;
+  color: #000;
   position: relative;
   display: block;
   padding-bottom: 10px;
   line-height: 1.5;
 }
+
+.demo-post text h2 {
+  margin: 150 0 0 0;
+  font-size: 40px;
+  font-weight: 400;
+  color: #000;
+  position: relative;
+  display: block;
+  padding-bottom: 10px;
+  line-height: 1.5;
+}
+
+.demo-heading h4 {
+  font-weight: 400;
+  color: #fff;
+  position: relative;
+  display: block;
+  padding-bottom: 10px;
+  line-height: 1.5;
+}
+
+.spacing{
+   margin: 50 0 0 0;
+}
+
 @media screen and (max-width: 768px) {
   .section-heading h2 {
     font-size: 28px;
@@ -1212,4 +1351,8 @@ h1, h2, h3, h4, h5, h6 {
   border: 2px solid #ff3b30;
 }
 
+.codeblock{
+  float:center;
+  width: 50%;
+}
 /*# sourceMappingURL=style.css.map */

@@ -1,0 +1,96 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimal-ui">
+    <title>Some Tally Concepts</title>
+    <link type="text/css" rel="stylesheet" href="assets/css/github-markdown.css">
+    <link type="text/css" rel="stylesheet" href="assets/css/pilcrow.css">
+    <link type="text/css" rel="stylesheet" href="assets/css/hljs-github.min.css"/>
+  </head>
+  <body>
+    <article class="markdown-body"><h1 id="some-tally-concepts"><a class="header-link" href="#some-tally-concepts"></a>Some Tally Concepts</h1>
+<p>This guide outlines the idea of Tally and the flow of elements and the paramters available in Tally. It goes over distinction</p>
+<h2 id="the-tallying-schema"><a class="header-link" href="#the-tallying-schema"></a>The Tallying Schema</h2>
+<p>This is a schema as passed when intializing a cluster/table for a particular dataset. You may modify this schema as necessary. Queries are generated automatically based on the flags that are present. </p>
+<p>The <code>total count</code> and <code>sum</code> of values is tracked by default, unless flagged for <code>Distinct</code> values, where each value is maintained. </p>
+<p>Keep in mind, that the totals change every day. You may use our <code>save state</code> option to take snapshots of your aggregates over time, or you may read your set everyday, and keep track of state on your own.</p>
+<pre class="hljs"><code>[
+    { 
+        <span class="hljs-attr">"attrName"</span>:<span class="hljs-string">"City"</span>,
+          <span class="hljs-attr">"type"</span>:<span class="hljs-string">"string"</span>,
+          <span class="hljs-attr">"isDistinct"</span>:<span class="hljs-literal">true</span>
+    },
+       { 
+        <span class="hljs-attr">"attrName"</span>:<span class="hljs-string">"Temperature"</span>,
+          <span class="hljs-attr">"type"</span>:<span class="hljs-string">"integer"</span>,
+          <span class="hljs-attr">"isDistinct"</span>:<span class="hljs-literal">false</span>
+    },
+    { 
+        <span class="hljs-attr">"attrName"</span>:<span class="hljs-string">"Forecast"</span>,
+          <span class="hljs-attr">"type"</span>:<span class="hljs-string">"string"</span>,
+          <span class="hljs-attr">"isDistinct"</span>:<span class="hljs-literal">true</span>,
+          <span class="hljs-attr">"relate"</span>:[<span class="hljs-string">"City"</span>]
+    }
+
+]    </code></pre><p>Breaking it Down:</p>
+<table>
+<thead>
+<tr>
+<th><strong>Attribute Name</strong></th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>attrName</code></td>
+<td>This identifies the &quot;column&quot; or attribute that is present in the schema</td>
+</tr>
+<tr>
+<td><code>type</code></td>
+<td>This will let us know the type for the actual data value</td>
+</tr>
+<tr>
+<td><code>isDisinct</code></td>
+<td>The isDistinct Flag let&#39;s us keep track of individual elements when necessary. If elements repeat, how many times they repeat is also kept. Read below for more details</td>
+</tr>
+<tr>
+<td><code>relate</code></td>
+<td>An array with attribute names to keep a running aggregate of the <code>count</code> of one attribute in relation to another. Useful to see metrics such as Number of Sunny Days in Seattle</td>
+</tr>
+</tbody>
+</table>
+<p>Note:</p>
+<pre class="hljs"><code>In <span class="hljs-keyword">the</span> future, we will expand our relate functions such that they may hold more aggregate functions more than just counting. For example, this might mean relating such that <span class="hljs-keyword">a</span> <span class="hljs-built_in">set</span> <span class="hljs-keyword">of</span> integers, <span class="hljs-keyword">or</span> averages might be held instead <span class="hljs-keyword">of</span> <span class="hljs-keyword">a</span> count. Eg. The <span class="hljs-built_in">average</span> temperatures <span class="hljs-keyword">in</span> <span class="hljs-keyword">a</span> relation over <span class="hljs-built_in">time</span>.</code></pre><h2 id="how-disinction-works"><a class="header-link" href="#how-disinction-works"></a>How Disinction Works</h2>
+<p>When the Distinct flag is used, we keep track in array like so: </p>
+<pre class="hljs"><code>[
+    {
+        <span class="hljs-attr">"Value"</span>: <span class="hljs-string">"Seattle"</span>,
+     <span class="hljs-attr">"Count"</span>: <span class="hljs-number">11</span>
+    },
+    {
+        <span class="hljs-attr">"Value"</span>: <span class="hljs-string">"Dallas"</span>,
+        <span class="hljs-attr">"Count"</span>: <span class="hljs-number">11</span>
+    }
+]</code></pre><p>Disctinct values are indexed to minimize runtime and keep track of each Distinct Value and their count. </p>
+<h2 id="how-relation-works"><a class="header-link" href="#how-relation-works"></a>How Relation Works</h2>
+<p>Relating an attribute to another, would mean that an attribute will be kept in reference to the other. Of course, the more relations, the higher the costs. Remember, since data is not permanent, once data leaves your table, it will no longer be possible to relate data points after data is no longer being stored. This is how a relation will be stored for your retrieval later:</p>
+<pre class="hljs"><code>[
+    {
+        <span class="hljs-attr">"Value"</span>: <span class="hljs-string">"Sunny"</span>,
+     <span class="hljs-attr">"Related"</span>: {
+         <span class="hljs-attr">"Seattle"</span>: <span class="hljs-number">3</span>,
+         <span class="hljs-attr">"Dallas"</span>: <span class="hljs-number">9</span>
+     }
+    },
+    {
+        <span class="hljs-attr">"Value"</span>: <span class="hljs-string">"Cloudy"</span>,
+        <span class="hljs-attr">"Related"</span>: {
+         <span class="hljs-attr">"Seattle"</span>: <span class="hljs-number">8</span>,
+         <span class="hljs-attr">"Dallas"</span>: <span class="hljs-number">2</span>
+     }
+    }
+]</code></pre><p>Relations are useful when comparing datasets. </p>
+    </article>
+  </body>
+</html>

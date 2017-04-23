@@ -1,0 +1,110 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimal-ui">
+    <title>Getting Started with Building a Schema</title>
+    <link type="text/css" rel="stylesheet" href="assets/css/github-markdown.css">
+    <link type="text/css" rel="stylesheet" href="assets/css/pilcrow.css">
+    <link type="text/css" rel="stylesheet" href="assets/css/hljs-github.min.css"/>
+  </head>
+  <body>
+    <article class="markdown-body"><h2 id="getting-started-with-building-a-schema"><a class="header-link" href="#getting-started-with-building-a-schema"></a>Getting Started with Building a Schema</h2>
+<p>Understanding the Tally Schema is simple, but necessary to understand. </p>
+<p>This will teach you the structure of the schema. </p>
+<h2 id="constructing-your-own-schema"><a class="header-link" href="#constructing-your-own-schema"></a>Constructing your own Schema</h2>
+<p>A Tally Schema is a simple JSON object that is defined to keep track of the elements. Here is a sample Schema for a sign-in system. We will understand what these keys values mean.</p>
+<pre class="hljs"><code>{
+  <span class="hljs-attr">"name"</span>: <span class="hljs-string">"AttendeeList"</span>,
+  <span class="hljs-attr">"expiry"</span>: <span class="hljs-number">180</span>,
+  <span class="hljs-attr">"attributes"</span>: [
+    {
+      <span class="hljs-attr">"name"</span>: <span class="hljs-string">"NetID"</span>,
+      <span class="hljs-attr">"type"</span>: <span class="hljs-string">"STRING"</span>,
+      <span class="hljs-attr">"isDistinct"</span>: <span class="hljs-literal">true</span>,
+      <span class="hljs-attr">"relate"</span>: [
+        <span class="hljs-string">"Day"</span>
+      ]
+    },
+    {
+      <span class="hljs-attr">"name"</span>: <span class="hljs-string">"Day"</span>,
+      <span class="hljs-attr">"type"</span>: <span class="hljs-string">"STRING"</span>,
+      <span class="hljs-attr">"isDistinct"</span>: <span class="hljs-literal">true</span>
+    },
+    {
+      <span class="hljs-attr">"name"</span>: <span class="hljs-string">"Time"</span>,
+      <span class="hljs-attr">"type"</span>: <span class="hljs-string">"DATE"</span>,
+      <span class="hljs-attr">"isDistinct"</span>: <span class="hljs-literal">false</span>
+    }
+  ]
+}</code></pre><table>
+<thead>
+<tr>
+<th style="text-align:left">Attribute</th>
+<th>Description</th>
+<th>Note</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><code>name</code></td>
+<td>This is the name of the schema. It will need to be unique for each dataset</td>
+<td>There are currently no checks. You may override existing tally tables</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>expiry</code></td>
+<td>Expiry time in seconds for data inserted to Tally</td>
+<td>Not yet enforced</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>Attributes</code></td>
+<td>Attributes are a JSON object that define the data and their relations</td>
+<td>Must be an Array</td>
+</tr>
+</tbody>
+</table>
+<h3 id="understanding-an-attribute"><a class="header-link" href="#understanding-an-attribute"></a>Understanding an Attribute</h3>
+<p>Attibutes are the fields that make up the records that go into Tally. We will use these objects to keep track of our data. You should read more on attribute concepts <a href="./concepts.html">here</a></p>
+<pre class="hljs"><code>    {
+      <span class="hljs-attr">"name"</span>: <span class="hljs-string">"NetID"</span>,
+      <span class="hljs-attr">"type"</span>: <span class="hljs-string">"STRING"</span>,
+      <span class="hljs-attr">"isDistinct"</span>: <span class="hljs-literal">true</span>,
+      <span class="hljs-attr">"relate"</span>: [
+        <span class="hljs-string">"Day"</span>
+      ]
+    }</code></pre><table>
+<thead>
+<tr>
+<th style="text-align:left">Attribute</th>
+<th>Description</th>
+<th>Note</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><code>name</code></td>
+<td>This is the name of the attribute</td>
+<td>When inserting data, make sure that the insert data key matches the name defined here</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>type</code></td>
+<td>This is the data type of the value to be inserted. There are currenltly 5 possible types to use</td>
+<td>You may use: <code>INT,STRING,CHAR,DOUBLE,DATE</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>isDistinct</code></td>
+<td>Boolean value that designates if these values are distinct. Ideally, you would want to check these for values that are repeating. Think, an ID or a Day of the Week</td>
+<td>When set, aggregate counts up each distinct value and keeps track</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>relate</code></td>
+<td>An array of attribute&#39;s to relate to. May Relate one value with another. Depending on the attribute, it does the Attribute VS Target.</td>
+<td>You may only use it with attributes flagged as Distinct. Currently only relates the counts of two attributes.</td>
+</tr>
+</tbody>
+</table>
+    </article>
+  </body>
+</html>
