@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Tally Demo</title>
+    <link type="text/css" rel="stylesheet" href="assets/css/bootstrap.css"/>
+    <style>
+      body {
+        padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
+      }
+    </style>
+    <link type="text/css" rel="stylesheet" href="assets/css/bootstrap-responsive.css"/>
+    <link type="text/css" rel="stylesheet" href="assets/css/pilcrow.css"/>
+    <link type="text/css" rel="stylesheet" href="assets/css/hljs-github.min.css"/>
+  </head>
+<body>
+
+  <div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="navbar-inner">
+      <div class="container">
+        <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="brand" href="../index.html">Tally.io</a>
+        <div class="nav-collapse collapse">
+          <ul class="nav">
+            <li class="active"><a href="#">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </div>
+  </div>
+
+
+
+  <div class="container">
+<h1 id="tally-demo"><a class="header-link" href="#tally-demo"></a>Tally Demo</h1>
+<p>Here is a sample that demonstrates Tally in Action.</p>
+<p>We want to know how many times each button is pressed.</p>
+<p>Here are three buttons:</p>
+ 
+<button type="button" class="btn btn-danger" onclick="red_buttonClick()"> Red Button </button> 
+<button type="button" class="btn btn-success" onclick="green_buttonClick()"> Green Button</button> 
+<button type="button" class="btn btn-primary" onclick="blue_buttonClick()"> Blue Button</button>
+<pre id="sample" class="hljs"><code>
+   {
+    <span class="hljs-attr">"red-button"</span>:<span class="hljs-number">1</span>
+    <span class="hljs-attr">"green-button"</span>:<span class="hljs-number">5</span>
+    <span class="hljs-attr">"blue-button"</span>:<span class="hljs-number">3</span>
+   }
+  </code></pre>
+
+
+<h5>A Tally Schema for this dataset has been created like this:</h5>
+<pre class="hljs"><code>{
+  <span class="hljs-attr">"name"</span>: <span class="hljs-string">"TallyDemoButtons"</span>,
+  <span class="hljs-attr">"expiry"</span>: <span class="hljs-number">180</span>,
+  <span class="hljs-attr">"attributes"</span>: [
+    {
+      <span class="hljs-attr">"name"</span>: <span class="hljs-string">"buttonID"</span>,
+      <span class="hljs-attr">"type"</span>: <span class="hljs-string">"STRING"</span>,
+      <span class="hljs-attr">"isDistinct"</span>: <span class="hljs-literal">true</span>
+    }
+    ]
+}</code></pre><p>Every single time you press a button, a <b>POST</b> request is made to the Tally endpoint like this:</p>
+<pre class="hljs"><code>[
+    {   
+        <span class="hljs-attr">"buttonID"</span>:<span class="hljs-string">"red-button"</span>
+    }
+]</code></pre>
+<p>The aggregates are updated, and below are the totals over time. No DB. No Storage. We just keep track of the Tally. The live values are updated above</p>
+ 
+
+  </div>
+
+
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script type="text/javascript" src="assets/js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="assets/js/demo.js"></script>
+</body>
+</html>
