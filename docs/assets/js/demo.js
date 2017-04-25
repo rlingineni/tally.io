@@ -2,7 +2,7 @@ function red_buttonClick(){
 
     console.log("HELLO Red!!!")
     var payload = [{"buttonID":"red-button"}];
-    var base = "http://tally.us-east-1.elasticbeanstalk.com";
+    var base = "https://tally.us-east-1.elasticbeanstalk.com";
 
 $.ajax({
     type: "POST",
