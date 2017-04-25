@@ -31,8 +31,8 @@ $.ajax({
     
 },
     error: function(xhr, ajaxOptions, thrownError) {
+        console.log(thrownError);
          alert(xhr.status);
-    alert(thrownError);
     }
 });
 
