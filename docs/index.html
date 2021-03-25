@@ -9,36 +9,14 @@
     <link type="text/css" rel="stylesheet" href="assets/css/hljs-github.min.css"/>
   </head>
   <body>
-    <article class="markdown-body"><h1 id="getting-started-with-tally"><a class="header-link" href="#getting-started-with-tally"></a>Getting Started with Tally</h1>
+    <article class="markdown-body"><h1 id="getting-started-with-tally">Getting Started with Tally</h1>
 <p>Tally keeps track of aggregates. It may be used in a wide array of cases. It is currently available as a C# API. </p>
-<h4 id="[web-routes](http://docs.tally4.apiary.io/)"><a class="header-link" href="#[web-routes](http://docs.tally4.apiary.io/)"></a><a href="http://docs.tally4.apiary.io/">Web Routes</a></h4>
-<h4 id="[getting-started-with-schemas](./schema.html)"><a class="header-link" href="#[getting-started-with-schemas](./schema.html)"></a><a href="./schema.html">Getting Started with Schemas</a></h4>
-<h4 id="[tally-concepts](./concepts.html)"><a class="header-link" href="#[tally-concepts](./concepts.html)"></a><a href="./concepts.html">Tally Concepts</a></h4>
-<h2 id="quick-start"><a class="header-link" href="#quick-start"></a>Quick Start</h2>
-<p>Check out the <a href="http://docs.tally4.apiary.io/">Web API docs</a> for more information on routing and parameter details.</p>
-<ol class="list">
-<li><p><strong>Create a schema for your dataset</strong></p>
-<ul class="list">
-<li>Take a look at the <a href="./schema.html">Tally Schema</a> format to understand how to intialize a Tally Table for your data to keep track </li>
-<li>Make a <code>POST</code> request to the <code>api/schema</code> route with your JSON schema</li>
-</ul>
-</li>
-<li><p><strong>Insert Data to your Tally Table</strong></p>
-<ul class="list">
-<li><p>Insert data with a <code>POST</code> request to the <code>api/data/insert/{schemaName}</code> route with your data as JSON</p>
-<p><em>You can also retrieve existing Tally data using <code>api/data/retrieve/{schemaName}</code> </em></p>
-</li>
-</ul>
-</li>
-<li><p><strong>Retrieve Aggregates for your data</strong></p>
-<ul class="list">
-<li>Aggregates are the results from your growing dataset over time. Use the <code>api/aggregates/retrieve/{schemaName}</code> to get your aggregates file</li>
-</ul>
-</li>
-</ol>
-<h2 id="tally-explained"><a class="header-link" href="#tally-explained"></a>Tally Explained</h2>
+<h4 id="-web-routes-http-docs-tally4-apiary-io-"><a href="http://docs.tally4.apiary.io/">Web Routes</a></h4>
+<h4 id="-getting-started-with-schemas-schema-html-"><a href="./schema.html">Getting Started with Schemas</a></h4>
+<h4 id="-tally-concepts-concepts-html-"><a href="./concepts.html">Tally Concepts</a></h4>
+<h2 id="tally-explained">Tally Explained</h2>
 <p>There are 420 jelly beans in a container. I want to know the following data:</p>
-<ul class="list">
+<ul>
 <li>ratio of blue to red beans </li>
 <li>ratio of green to yellow beans</li>
 <li>total numbers of each jelly bean every hour</li>
@@ -46,6 +24,29 @@
 <p>Is it easier to dump our jelly beans and recount our totals every time? This would be the traditional approach with keeping track of data in a database.</p>
 <p>However, since we already know the information we want. It&#39;s easier to keep track of the information we want individually? Let&#39;s just update those values as we add each bean to get a running count.</p>
 <p>... or a “tally” of information every single time we insert new values as opposed to investing in keeping data organized over longer amounts of time. That&#39;s the idea behind Tally.</p>
+<h2 id="getting-started">Getting Started</h2>
+<p>Check out the <a href="http://docs.tally4.apiary.io/">Web API docs</a> for more information on routing and parameter details.</p>
+<ol>
+<li><p><strong>Create a schema for your dataset</strong></p>
+<ul>
+<li>Take a look at the <a href="./schema.html">Tally Schema</a> format to understand how to intialize a Tally Table for your data to keep track </li>
+<li>Make a <code>POST</code> request to the <code>api/schema</code> route with your JSON schema</li>
+</ul>
+</li>
+<li><p><strong>Insert Data to your Tally Table</strong></p>
+<ul>
+<li><p>Insert data with a <code>POST</code> request to the <code>api/data/insert/{schemaName}</code> route with your data as JSON</p>
+<p><em>You can also retrieve existing Tally data using <code>api/data/retrieve/{schemaName}</code> </em></p>
+</li>
+</ul>
+</li>
+<li><p><strong>Retrieve Aggregates for your data</strong></p>
+<ul>
+<li>Aggregates are the results from your growing dataset over time. Use the <code>api/aggregates/retrieve/{schemaName}</code> to get your aggregates file</li>
+</ul>
+</li>
+</ol>
+
     </article>
   </body>
 </html>
